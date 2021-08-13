@@ -7,7 +7,7 @@ import SiteBar from "./SiteBar";
 export default function Sections () {
     return (
         <div className='row'>
-            <div className="col-md-2">
+            <div className="col-md-2 col-sm-12">
                 <SiteBar />
             </div>
                 <Routes />

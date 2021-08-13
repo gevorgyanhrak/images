@@ -61,3 +61,37 @@ code {
 .sitebar_wrapper{
   margin-top: 15px;
 }
+.sitebar_wrapper{
+    position: fixed;
+}
+@media screen and (max-width: 1400px) {
+    .image-responsive {
+        width: 196px;
+        display: block;
+        height: 152px;
+    }
+}
+@media screen and (max-width: 990px) {
+    .image-responsive {
+        width: 137px;
+        display: block;
+        height: 112px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .image-responsive {
+        width: 177px;
+        display: block;
+        height: 153px;
+    }
+    .sitebar_wrapper {
+        position: static;
+    }
+    .link_cat {
+        color: #000;
+        text-decoration: none;
+        transition: all .5s ease;
+        margin-bottom: 1px;
+        display: block;
+    }
+}

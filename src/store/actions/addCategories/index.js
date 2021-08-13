@@ -1,7 +1,9 @@
+import {CATEGORIES_API} from "../../../helpers/helpers";
+
 const addCategories = () => {
     return (dispatch) => {
         dispatch({type: "ADD_CAT_START"});
-        fetch('https://api.thecatapi.com/v1/categories').then(res => res.json())
+        fetch(CATEGORIES_API).then(res => res.json())
             .then((res) => {
                 dispatch({
                     type: "ADD_CAT_SUCCESS",

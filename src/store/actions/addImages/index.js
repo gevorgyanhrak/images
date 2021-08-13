@@ -1,10 +1,11 @@
-import {DEFAULT_ID} from "../../../helpers/helpers";
+import {IMAGE_API} from "../../../helpers/helpers";
 
 const addImages = (id,limit) => {
-    const cat_id = id ? id : DEFAULT_ID;
+    const cat_url  = !id ? IMAGE_API+`?limit=${limit}&page=1` : IMAGE_API+`?limit=${limit}&page=1&category_ids=${id}`;
     return (dispatch) => {
         dispatch({type: 'ADD_IMAGES_START'});
-        fetch(`https://api.thecatapi.com/v1/images/search?limit=${limit}&page=1&category_ids=${cat_id}`)
+
+        fetch(cat_url)
             .then(response => response.json())
             .then(res => {
                 dispatch(

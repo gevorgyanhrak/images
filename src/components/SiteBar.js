@@ -12,6 +12,10 @@ export default function SiteBar() {
     useEffect(() => {
         dispatch(addCategories())
     }, [])
+
+    if(error){
+        alert(error.message || error);
+    }
     return (
         <div className='sitebar_wrapper'>
             {data.map((cat) => (

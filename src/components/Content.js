@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {DEFAULT_LIMIT} from "../helpers/helpers";
-import Loader from "./loader";
 import {useDispatch, useSelector} from "react-redux";
 import addImages from "../store/actions/addImages";
+import Images from "./Images";
 
 
 function Content() {
@@ -14,9 +14,9 @@ function Content() {
     const state = useSelector(state => state.imagesReducer)
     const {error, loading, data} = state;
 
-    useEffect(()=> {
+    useEffect(() => {
         setLimit(DEFAULT_LIMIT);
-    },[id])
+    }, [id])
 
     useEffect(() => {
         dispatch(addImages(id, limit))
@@ -24,24 +24,13 @@ function Content() {
 
 
     if (error) {
-        alert(error?.message);
+        alert(error.message || error);
     }
 
     return (
-
-        <div className='col-md-10 image_block_parent'>
-            {loading ? <Loader/> : Array.isArray(data) && data.map((d) => (
-                <div key={d.id} className='image_block col-md-3'>
-                    <img src={d.url} className='image-responsive' alt=""/>
-                    <p>Category : {d.categories.map((cat) => (cat.name))}</p>
-                </div>
-            ))}
-            {loading ? '' : <div className="row">
-                <button className='learn_more' onClick={() => {
-                    setLimit(limit + DEFAULT_LIMIT)
-                }}> Learn more
-                </button>
-            </div>}
+        <div className='col-md-12 image_block_parent'>
+            {!Array.isArray(data) || data.length < 1 ? 'Not Found' :
+                <Images loading={loading} data={data} setLimit={setLimit} limit={limit}/>}
         </div>
     )
 }
