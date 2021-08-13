@@ -10,7 +10,9 @@ export default function Sections () {
             <div className="col-md-2 col-sm-12">
                 <SiteBar />
             </div>
+            <div className="col-md-10 col-sm-12" >
                 <Routes />
+            </div>
         </div>
     )
 }

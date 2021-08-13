@@ -13,7 +13,7 @@ function App() {
         <Provider store={store}>
             <Router>
                 <div className="App">
-                    <div className="container">
+                    <div className="container-fluid">
                         <Sections/>
                     </div>
                 </div>

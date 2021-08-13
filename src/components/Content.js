@@ -4,6 +4,8 @@ import {DEFAULT_LIMIT} from "../helpers/helpers";
 import {useDispatch, useSelector} from "react-redux";
 import addImages from "../store/actions/addImages";
 import Images from "./Images";
+import Loader from "./loader";
+import NotFound from "./NotFound";
 
 
 function Content() {
@@ -28,10 +30,11 @@ function Content() {
     }
 
     return (
-        <div className='col-md-12 image_block_parent'>
-            {!Array.isArray(data) || data.length < 1 ? 'Not Found' :
-                <Images loading={loading} data={data} setLimit={setLimit} limit={limit}/>}
-        </div>
+        <>
+            {loading ? <Loader /> :
+             (!Array.isArray(data) || data.length < 1) ? <NotFound /> :
+                <Images data={data} setLimit={setLimit} limit={limit}/>}
+        </>
     )
 }
 
